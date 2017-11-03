@@ -37,14 +37,15 @@
             messagingSenderId: "695480817189"
         };
   
-        firebase.initializeApp(config);
+        firebase.initializeApp(config); 
+
+        var provider = new firebase.auth.GoogleAuthProvider();
         
         $(function () {
             // on click a google sign in box should popup.
             $("#btnSignIn").on("click", function () {
                 // confirm button is clicking
                 console.log("button works"); 
-                var provider = new firebase.auth.GoogleAuthProvider();
                 firebase.auth().signInWithPopup(provider).then(function (result) {
                     // This gives you a Google Access Token. You can use it to access the Google API.
                     var token = result.credential.accessToken; 
