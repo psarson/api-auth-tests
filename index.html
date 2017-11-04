@@ -9,24 +9,13 @@
     <title>OAuth Test</title>
 </head>
 
-<body>
+<body> 
 
-    <form>
-        <button id="btnSignIn" class="btn btn-primary">Sign In with Google</button>
-    </form>
+    <div class="text-center">
+        <button id="btnSignIn" class="btn btn-primary" onclick="signIn()"><i class="fa fa-google-plus"></i>Sign In with Google</button>
+    </div>
 
 
-    <!-- <script src="./assets/javascript/oauth.js"></script> -->
-
-    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
-    
-    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-auth.js"></script> 
-
-    <!-- was in a tutorial and on the older support docs to recognize google accounts -->
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
     <script>
         var config = {
             apiKey: "AIzaSyAXFA1tt7nok2S8Sx9pav_2p2wdgBSMWmY",
@@ -36,37 +25,19 @@
             storageBucket: "api-host-test.appspot.com",
             messagingSenderId: "695480817189"
         };
-  
+    
         firebase.initializeApp(config); 
-
-        var provider = new firebase.auth.GoogleAuthProvider();
-        
-        $(function () {
-            // on click a google sign in box should popup.
-            $("#btnSignIn").on("click", function () {
-                // confirm button is clicking
-                console.log("button works"); 
-                firebase.auth().signInWithPopup(provider).then(function (result) {
-                    // This gives you a Google Access Token. You can use it to access the Google API.
-                    var token = result.credential.accessToken; 
-
-                    console.log(token);
-                    // The signed-in user info.
-                    var user = result.user;
-                    console.log(user);
-                    // ...
-                }).catch(function (error) {
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    // The email of the user's account used.
-                    var email = error.email;
-                    // The firebase.auth.AuthCredential type that was used.
-                    var credential = error.credential;
-                    // ...
-                });
-            });
-        });
     </script>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase-auth.js"></script> 
+
+    <!-- was in a tutorial and on the older support docs to recognize google accounts -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+
+    <script src="main.js"></script>
 
 </body>
