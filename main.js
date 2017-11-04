@@ -11,7 +11,7 @@ function signIn() {
         var token = result.credential.accessToken; 
         user = result.user; 
         console.log(user.displayName) 
-        $("#btnSignOut").show();
+        showWelcome();
         
     }).catch(function (error) {          
         var errorCode = error.code;
