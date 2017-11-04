@@ -1,10 +1,17 @@
-var provider = new firebase.auth.GoogleAuthProvider();
+var provider = new firebase.auth.GoogleAuthProvider(); 
+var user;
+
+$(document).ready(function(){
+    $("#btnSignOut").hide();
+})
+
 
 function signIn() {
     firebase.auth().signInWithPopup(provider).then(function (result) {
         var token = result.credential.accessToken; 
-        var user = result.user; 
-        console.log(user.displayName)
+        user = result.user; 
+        console.log(user.displayName) 
+        $("#btnSignOut").show();
         
     }).catch(function (error) {          
         var errorCode = error.code;
@@ -12,6 +19,12 @@ function signIn() {
         var email = error.email;
         var credential = error.credential;    
     }); 
-};  
+};   
+
+
+function showWelcome(){
+    $("#btnSignOut").show(); 
+    $("#user-name").html("Welcome" + user.displayName);
+}
 
 
