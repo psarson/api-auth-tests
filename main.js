@@ -10,7 +10,6 @@ function signIn() {
     firebase.auth().signInWithPopup(provider).then(function (result) {
         var token = result.credential.accessToken; 
         user = result.user; 
-        console.log(user.displayName) 
         showWelcome();
         
     }).catch(function (error) {          
